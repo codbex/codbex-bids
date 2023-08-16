@@ -1,0 +1,661 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "CODBEX_BID",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "BID_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "BID_NAME"
+                    },
+                    {
+                        "type": "DATE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_VALIDITYDATE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_QUANTITY"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_PRICE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_TOTAL"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_OFFER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_UOM"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_PRODUCT"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 3,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_CURRENCYCODE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_BUYER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_TRADER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BID_BIDSTATUS"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_OFFER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "OFFER_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "OFFER_NAME"
+                    },
+                    {
+                        "type": "DATE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_DATE"
+                    },
+                    {
+                        "type": "DATE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_EXPIRYDATE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_QUANTITY"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_PRICE"
+                    },
+                    {
+                        "type": "DOUBLE",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_TOTAL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 3,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_CURRENCYCODE"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_UOM"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_LOCATION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_PRODUCT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_COUNTRY"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_SUPPLIER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_TRADER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "OFFER_OFFERSTATUS"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_CURRENCY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "VARCHAR",
+                        "length": 3,
+                        "primaryKey": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CURRENCY_CODE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 127,
+                        "nullable": true,
+                        "name": "CURRENCY_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 3,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "CURRENCY_NUMERIC"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "CURRENCY_ROUNDING"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "CURRENCY_ACTIVE"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_UOM",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "UOM_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
+                        "name": "UOM_NAME"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "UOM_UNIT"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "UOM_DIMENSION"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "UOM_NUMERATOR"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "UOM_DENOMINATOR"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "nullable": true,
+                        "name": "UOM_ROUNDING"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PRODUCT",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PRODUCT_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 200,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_PRODUCTTYPEID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_PRODUCTCATEGORYID"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PRODUCT_UOMID"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_COUNTRY",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "COUNTRY_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 255,
+                        "nullable": true,
+                        "name": "COUNTRY_NAME"
+                    },
+                    {
+                        "type": "CHAR",
+                        "length": 2,
+                        "nullable": true,
+                        "name": "COUNTRY_CODE2"
+                    },
+                    {
+                        "type": "CHAR",
+                        "length": 3,
+                        "nullable": true,
+                        "name": "COUNTRY_CODE3"
+                    },
+                    {
+                        "type": "CHAR",
+                        "length": 3,
+                        "nullable": true,
+                        "name": "COUNTRY_NUMERIC"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_PARTNER",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "PARTNER_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 100,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PARTNER_NAME"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PARTNER_PARTNERTYPEID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PARTNER_ADDRESS"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PARTNER_CITY"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PARTNER_POSTALCODE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PARTNER_EMAIL"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PARTNER_PHONE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "PARTNER_FAX"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "PARTNER_COUNTRYID"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_OFFERSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "OFFERSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "OFFERSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "CODBEX_BIDSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "BIDSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "nullable": true,
+                        "name": "BIDSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "Bid_Offer",
+                "type": "foreignKey",
+                "table": "CODBEX_BID",
+                "constraintName": "Bid_Offer",
+                "columns": "BID_OFFER",
+                "referencedTable": "CODBEX_OFFER",
+                "referencedColumns": "OFFER_ID"
+            },
+            {
+                "name": "Bid_UoM",
+                "type": "foreignKey",
+                "table": "CODBEX_BID",
+                "constraintName": "Bid_UoM",
+                "columns": "BID_UOM",
+                "referencedTable": "CODBEX_UOM",
+                "referencedColumns": "UOM_ID"
+            },
+            {
+                "name": "Bid_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_BID",
+                "constraintName": "Bid_Product",
+                "columns": "BID_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "Bid_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_BID",
+                "constraintName": "Bid_Currency",
+                "columns": "BID_CURRENCYCODE",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_CODE"
+            },
+            {
+                "name": "Bid_Partner",
+                "type": "foreignKey",
+                "table": "CODBEX_BID",
+                "constraintName": "Bid_Partner",
+                "columns": "BID_BUYER",
+                "referencedTable": "CODBEX_PARTNER",
+                "referencedColumns": "PARTNER_ID"
+            },
+            {
+                "name": "Bid_Partner",
+                "type": "foreignKey",
+                "table": "CODBEX_BID",
+                "constraintName": "Bid_Partner",
+                "columns": "BID_TRADER",
+                "referencedTable": "CODBEX_PARTNER",
+                "referencedColumns": "PARTNER_ID"
+            },
+            {
+                "name": "Bid_BidStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_BID",
+                "constraintName": "Bid_BidStatus",
+                "columns": "BID_BIDSTATUS",
+                "referencedTable": "CODBEX_BIDSTATUS",
+                "referencedColumns": "BIDSTATUS_ID"
+            },
+            {
+                "name": "Offer_Currency",
+                "type": "foreignKey",
+                "table": "CODBEX_OFFER",
+                "constraintName": "Offer_Currency",
+                "columns": "OFFER_CURRENCYCODE",
+                "referencedTable": "CODBEX_CURRENCY",
+                "referencedColumns": "CURRENCY_CODE"
+            },
+            {
+                "name": "Offer_UoM",
+                "type": "foreignKey",
+                "table": "CODBEX_OFFER",
+                "constraintName": "Offer_UoM",
+                "columns": "OFFER_UOM",
+                "referencedTable": "CODBEX_UOM",
+                "referencedColumns": "UOM_ID"
+            },
+            {
+                "name": "Offer_Product",
+                "type": "foreignKey",
+                "table": "CODBEX_OFFER",
+                "constraintName": "Offer_Product",
+                "columns": "OFFER_PRODUCT",
+                "referencedTable": "CODBEX_PRODUCT",
+                "referencedColumns": "PRODUCT_ID"
+            },
+            {
+                "name": "Offer_Country",
+                "type": "foreignKey",
+                "table": "CODBEX_OFFER",
+                "constraintName": "Offer_Country",
+                "columns": "OFFER_COUNTRY",
+                "referencedTable": "CODBEX_COUNTRY",
+                "referencedColumns": "COUNTRY_ID"
+            },
+            {
+                "name": "Offer_Partner",
+                "type": "foreignKey",
+                "table": "CODBEX_OFFER",
+                "constraintName": "Offer_Partner",
+                "columns": "OFFER_SUPPLIER",
+                "referencedTable": "CODBEX_PARTNER",
+                "referencedColumns": "PARTNER_ID"
+            },
+            {
+                "name": "Offer_Partner",
+                "type": "foreignKey",
+                "table": "CODBEX_OFFER",
+                "constraintName": "Offer_Partner",
+                "columns": "OFFER_TRADER",
+                "referencedTable": "CODBEX_PARTNER",
+                "referencedColumns": "PARTNER_ID"
+            },
+            {
+                "name": "Offer_OfferStatus",
+                "type": "foreignKey",
+                "table": "CODBEX_OFFER",
+                "constraintName": "Offer_OfferStatus",
+                "columns": "OFFER_OFFERSTATUS",
+                "referencedTable": "CODBEX_OFFERSTATUS",
+                "referencedColumns": "OFFERSTATUS_ID"
+            }
+        ]
+    }
+}

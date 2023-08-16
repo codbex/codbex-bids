@@ -1,0 +1,40 @@
+{
+    "guid": "codbex-bids",
+    "repository": {
+        "type": "git",
+        "branch": "main",
+        "url": "https://github.com/codbex/codbex-bids.git"
+    },
+    "dependencies": [
+        {
+            "guid": "codbex-products",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-products.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-partners",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-partners.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-currencies",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-currencies.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-uoms",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-uoms.git",
+            "branch": "main"
+        },
+        {
+            "guid": "codbex-countries",
+            "type": "git",
+            "url": "https://github.com/codbex/codbex-countries.git",
+            "branch": "main"
+        }
+    ]
+}
