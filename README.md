@@ -11,7 +11,7 @@ Bids Management Application
 
 ![launchpad](images/bids-launchpad.png)
 
-#### Launchpad
+#### Management
 
 ![offers](images/bids-offers.png)
 
