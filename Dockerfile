@@ -1,7 +1,7 @@
 # Docker descriptor for codbex-bids
 # License - http://www.eclipse.org/legal/epl-v20.html
 
-FROM ghcr.io/codbex/codbex-gaia:0.15.0
+FROM ghcr.io/codbex/codbex-gaia:0.16.0
 
 COPY codbex-bids target/dirigible/repository/root/registry/public/codbex-bids
 COPY codbex-bids-data target/dirigible/repository/root/registry/public/codbex-bids-data
