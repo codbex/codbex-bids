@@ -13,6 +13,6 @@
         "@codbex/codbex-partners": "0.2.0",
         "@codbex/codbex-currencies": "0.2.0",
         "@codbex/codbex-uoms": "0.2.0",
-        "@codbex/codbex-countries": "0.2.0",
+        "@codbex/codbex-countries": "0.2.0"
     }
 }
