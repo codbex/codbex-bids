@@ -3,7 +3,7 @@
     {
       "table": "CODBEX_BIDSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-bids-data/bid-statuses.csv",
+      "file": "/codbex-bids/data/bid-statuses.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",
@@ -14,7 +14,7 @@
     {
       "table": "CODBEX_OFFERSTATUS",
       "schema": "PUBLIC",
-      "file": "/codbex-bids-data/offer-types.csv",
+      "file": "/codbex-bids/data/offer-types.csv",
       "header": true,
       "useHeaderNames": true,
       "delimField": ",",

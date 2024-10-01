@@ -14,7 +14,7 @@ jobs:
   main:
     uses: codbex/codbex-infra/.github/workflows/module-release.yaml@main
     with:
-      packages: codbex-bids,codbex-bids-data
+      packages: codbex-bids
       packages-build: codbex-bids
       release-version: ${{ inputs.release-version }}
       release-content: |
@@ -26,7 +26,6 @@ jobs:
   
         ```
         npm install @codbex/codbex-bids@${{ inputs.release-version }}
-        npm install @codbex/codbex-bids-data@${{ inputs.release-version }}
         ```
   
         ## Access points:
