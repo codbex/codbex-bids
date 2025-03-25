@@ -1,0 +1,6 @@
+{
+    "module": "codbex-bids/gen/codbex-bids/ui/Bid/Bid/view.js",
+    "extensionPoint": "codbex-bids-view",
+    "description": "codbex-bids - Application View",
+    "role": "codbex-bids.Bid.BidReadOnly,codbex-bids.Bid.BidFullAccess"
+}

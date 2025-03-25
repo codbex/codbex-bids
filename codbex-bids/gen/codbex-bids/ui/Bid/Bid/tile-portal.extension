@@ -1,0 +1,6 @@
+{
+    "module": "codbex-bids/gen/codbex-bids/ui/Bid/Bid/tile.js",
+    "extensionPoint": "portal-tile",
+    "description": "codbex-bids - Application Tile",
+    "role": "codbex-bids.Bid.BidReadOnly,codbex-bids.Bid.BidFullAccess"
+}

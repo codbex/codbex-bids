@@ -1,0 +1,6 @@
+{
+    "module": "codbex-bids/gen/codbex-bids/ui/Offer/Offer/dialog-filter/view.js",
+    "extensionPoint": "dialog-window",
+    "description": "codbex-bids - Application Dialog Window",
+    "role": "codbex-bids.Offer.OfferReadOnly,codbex-bids.Offer.OfferFullAccess"
+}

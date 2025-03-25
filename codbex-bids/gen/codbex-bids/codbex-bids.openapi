@@ -1,0 +1,2899 @@
+openapi: 3.0.3
+info:
+  title: Bids Management Module - OpenAPI 3.0
+  version: 1.0.0
+  description: Managing Bids Data
+externalDocs:
+  description: Find out more about Eclipse Dirigible
+  url: https://dirigible.io
+servers:
+  - url: /services/ts
+tags:
+  - name: Bid
+  - name: Offer
+  - name: entities
+  - name: entities
+paths:
+  /codbex-bids/gen/codbex-bids/api/Bid/BidService.ts:
+    get:
+      summary: List Bid
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Bid
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Bid'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create Bid
+      tags:
+        - Bid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bid'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bid'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/Bid/BidService.ts/{id}:
+    get:
+      summary: Get Bid by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Bid
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Bid'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update Bid by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Bid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bid'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Bid'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete Bid by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Bid
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/Bid/BidService.ts/count:
+    get:
+      summary: Count the number of Bid
+      tags:
+        - Bid
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of Bid by BidFilterOptions
+      tags:
+        - Bid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BidFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      CurrencyCode: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      CurrencyCode: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/Bid/BidService.ts/search:
+    post:
+      summary: Search Bid by BidFilterOptions
+      tags:
+        - Bid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BidFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      CurrencyCode: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      CurrencyCode: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Bid'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/Offer/OfferService.ts:
+    get:
+      summary: List Offer
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - Offer
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Offer'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create Offer
+      tags:
+        - Offer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Offer'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offer'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/Offer/OfferService.ts/{id}:
+    get:
+      summary: Get Offer by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Offer
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Offer'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update Offer by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Offer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Offer'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Offer'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete Offer by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - Offer
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/Offer/OfferService.ts/count:
+    get:
+      summary: Count the number of Offer
+      tags:
+        - Offer
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of Offer by OfferFilterOptions
+      tags:
+        - Offer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      CurrencyCode: "abcd"
+                      Location: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      CurrencyCode: "abcd"
+                      Location: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/Offer/OfferService.ts/search:
+    post:
+      summary: Search Offer by OfferFilterOptions
+      tags:
+        - Offer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                      CurrencyCode: "abcd"
+                      Location: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+                      CurrencyCode: "abcd"
+                      Location: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/Offer'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/entities/OfferStatusService.ts:
+    get:
+      summary: List OfferStatus
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/OfferStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create OfferStatus
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferStatus'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/entities/OfferStatusService.ts/{id}:
+    get:
+      summary: Get OfferStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/OfferStatus'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update OfferStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferStatus'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OfferStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete OfferStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/entities/OfferStatusService.ts/count:
+    get:
+      summary: Count the number of OfferStatus
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of OfferStatus by OfferStatusFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferStatusFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/entities/OfferStatusService.ts/search:
+    post:
+      summary: Search OfferStatus by OfferStatusFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OfferStatusFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/OfferStatus'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/entities/BidStatusService.ts:
+    get:
+      summary: List BidStatus
+      parameters:
+        - in: query
+          name: $limit
+          description: The number of records to be returned _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+        - in: query
+          name: $offset
+          description: The number of records to skip _(both `$limit` and `$offset` should be provided)_.
+          required: false
+          allowReserved: true
+          schema:
+            type: integer
+            allowEmptyValue: true
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/BidStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create BidStatus
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BidStatus'
+        required: true
+      responses:
+        201:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BidStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/entities/BidStatusService.ts/{id}:
+    get:
+      summary: Get BidStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/BidStatus'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update BidStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BidStatus'
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BidStatus'
+        400:
+          description: Bad Request Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Delete BidStatus by Id
+      parameters:
+        - in: path
+          name: id
+          description: The Id of the entity.
+          required: true
+          schema:
+            type: string
+      tags:
+        - entities
+      responses:
+        204:
+          description: Successful Request
+        404:
+          description: Entity Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/entities/BidStatusService.ts/count:
+    get:
+      summary: Count the number of BidStatus
+      tags:
+        - entities
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Count the number of BidStatus by BidStatusFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BidStatusFilterOptions'
+            examples:
+              countWithMultipleCriteria:
+                summary: Count with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              countWithEquals:
+                summary: Count with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              countWithNotEquals:
+                summary: Count with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              countWithContains:
+                summary: Count with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              countWithGreaterThan:
+                summary: Count with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              countWithGreaterThanOrEqual:
+                summary: Count with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              countWithLessThan:
+                summary: Count with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              countWithLessThanOrEqual:
+                summary: Count with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 100
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /codbex-bids/gen/codbex-bids/api/entities/BidStatusService.ts/search:
+    post:
+      summary: Search BidStatus by BidStatusFilterOptions
+      tags:
+        - entities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BidStatusFilterOptions'
+            examples:
+              searchWithMultipleCriteria:
+                summary: Search with multiple criteria
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 33
+                    contains:
+                      Name: "abcd"
+                    greaterThan:
+                      Id: 0
+                    lessThanOrEqual:
+                      Id: 100
+              searchWithEquals:
+                summary: Search with Equals
+                value:
+                  $filter:
+                    equals:
+                      Id: 0
+              searchWithNotEquals:
+                summary: Search with Not Equals
+                value:
+                  $filter:
+                    notEquals:
+                      Id: 0
+              searchWithContains:
+                summary: Search with Contains
+                value:
+                  $filter:
+                    contains:
+                      Name: "abcd"
+              searchWithGreaterThan:
+                summary: Search with Greater Than
+                value:
+                  $filter:
+                    greaterThan:
+                      Id: 0
+              searchWithGreaterThanOrEqual:
+                summary: Search with Greater Than Or Equal
+                value:
+                  $filter:
+                    greaterThanOrEqual:
+                      Id: 0
+              searchWithLessThan:
+                summary: Search with Less Than
+                value:
+                  $filter:
+                    lessThan:
+                      Id: 0
+              searchWithLessThanOrEqual:
+                summary: Search with Less Than Or Equal
+                value:
+                  $filter:
+                    lessThanOrEqual:
+                      Id: 0
+        required: true
+      responses:
+        200:
+          description: Successful Request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                    $ref: '#/components/schemas/BidStatus'
+        403:
+          description: Forbidden Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Bid:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Date:
+        ValidityDate:
+        Quantity:
+          type: number
+          format: double
+        Price:
+          type: number
+          format: double
+        Total:
+          type: number
+          format: double
+        Offer:
+          type: integer
+          format: int32
+        UoM:
+          type: integer
+          format: int32
+        Product:
+          type: integer
+          format: int32
+        CurrencyCode:
+          type: string
+          minLength: 0
+          maxLength: 3
+        Buyer:
+          type: integer
+          format: int32
+        Trader:
+          type: integer
+          format: int32
+        Status:
+          type: integer
+          format: int32
+    BidFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Date:
+                  oneOf:
+                ValidityDate:
+                  oneOf:
+                Quantity:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Total:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Offer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                UoM:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Product:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                CurrencyCode:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 3
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 3
+                Buyer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Trader:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Status:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Date:
+                  oneOf:
+                ValidityDate:
+                  oneOf:
+                Quantity:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Total:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Offer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                UoM:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Product:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                CurrencyCode:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 3
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 3
+                Buyer:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Trader:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Status:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ValidityDate:
+                Quantity:
+                Price:
+                Total:
+                Offer:
+                UoM:
+                Product:
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                Buyer:
+                Trader:
+                Status:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ValidityDate:
+                Quantity:
+                  type: number
+                  format: double
+                Price:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                Offer:
+                  type: integer
+                  format: int32
+                UoM:
+                  type: integer
+                  format: int32
+                Product:
+                  type: integer
+                  format: int32
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                Buyer:
+                  type: integer
+                  format: int32
+                Trader:
+                  type: integer
+                  format: int32
+                Status:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ValidityDate:
+                Quantity:
+                  type: number
+                  format: double
+                Price:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                Offer:
+                  type: integer
+                  format: int32
+                UoM:
+                  type: integer
+                  format: int32
+                Product:
+                  type: integer
+                  format: int32
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                Buyer:
+                  type: integer
+                  format: int32
+                Trader:
+                  type: integer
+                  format: int32
+                Status:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ValidityDate:
+                Quantity:
+                  type: number
+                  format: double
+                Price:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                Offer:
+                  type: integer
+                  format: int32
+                UoM:
+                  type: integer
+                  format: int32
+                Product:
+                  type: integer
+                  format: int32
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                Buyer:
+                  type: integer
+                  format: int32
+                Trader:
+                  type: integer
+                  format: int32
+                Status:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ValidityDate:
+                Quantity:
+                  type: number
+                  format: double
+                Price:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                Offer:
+                  type: integer
+                  format: int32
+                UoM:
+                  type: integer
+                  format: int32
+                Product:
+                  type: integer
+                  format: int32
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                Buyer:
+                  type: integer
+                  format: int32
+                Trader:
+                  type: integer
+                  format: int32
+                Status:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Name", "Date", "ValidityDate", "Quantity", "Price", "Total", "Offer", "UoM", "Product", "CurrencyCode", "Buyer", "Trader", "Status"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,Date,ValidityDate,Quantity,Price,Total,Offer,UoM,Product,CurrencyCode,Buyer,Trader,Status"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    Offer:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+        Date:
+        ExpiryDate:
+        Quantity:
+          type: number
+          format: double
+        Price:
+          type: number
+          format: double
+        Total:
+          type: number
+          format: double
+        CurrencyCode:
+          type: string
+          minLength: 0
+          maxLength: 3
+        UoM:
+          type: integer
+          format: int32
+        Location:
+          type: string
+          minLength: 0
+          maxLength: 100
+        Product:
+          type: integer
+          format: int32
+        Country:
+          type: integer
+          format: int32
+        Supplier:
+          type: integer
+          format: int32
+        Trader:
+          type: integer
+          format: int32
+        Status:
+          type: integer
+          format: int32
+    OfferFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Date:
+                  oneOf:
+                ExpiryDate:
+                  oneOf:
+                Quantity:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Total:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                CurrencyCode:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 3
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 3
+                UoM:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Location:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Product:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Country:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Supplier:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Trader:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Status:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+                Date:
+                  oneOf:
+                ExpiryDate:
+                  oneOf:
+                Quantity:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Price:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                Total:
+                  oneOf:
+                    - type: number
+                      format: double
+                    - type: array
+                      items:
+                        type: number
+                        format: double
+                CurrencyCode:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 3
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 3
+                UoM:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Location:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 100
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 100
+                Product:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Country:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Supplier:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Trader:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Status:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ExpiryDate:
+                Quantity:
+                Price:
+                Total:
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                UoM:
+                Location:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Product:
+                Country:
+                Supplier:
+                Trader:
+                Status:
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ExpiryDate:
+                Quantity:
+                  type: number
+                  format: double
+                Price:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                UoM:
+                  type: integer
+                  format: int32
+                Location:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Product:
+                  type: integer
+                  format: int32
+                Country:
+                  type: integer
+                  format: int32
+                Supplier:
+                  type: integer
+                  format: int32
+                Trader:
+                  type: integer
+                  format: int32
+                Status:
+                  type: integer
+                  format: int32
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ExpiryDate:
+                Quantity:
+                  type: number
+                  format: double
+                Price:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                UoM:
+                  type: integer
+                  format: int32
+                Location:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Product:
+                  type: integer
+                  format: int32
+                Country:
+                  type: integer
+                  format: int32
+                Supplier:
+                  type: integer
+                  format: int32
+                Trader:
+                  type: integer
+                  format: int32
+                Status:
+                  type: integer
+                  format: int32
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ExpiryDate:
+                Quantity:
+                  type: number
+                  format: double
+                Price:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                UoM:
+                  type: integer
+                  format: int32
+                Location:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Product:
+                  type: integer
+                  format: int32
+                Country:
+                  type: integer
+                  format: int32
+                Supplier:
+                  type: integer
+                  format: int32
+                Trader:
+                  type: integer
+                  format: int32
+                Status:
+                  type: integer
+                  format: int32
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+                Date:
+                ExpiryDate:
+                Quantity:
+                  type: number
+                  format: double
+                Price:
+                  type: number
+                  format: double
+                Total:
+                  type: number
+                  format: double
+                CurrencyCode:
+                  type: string
+                  minLength: 0
+                  maxLength: 3
+                UoM:
+                  type: integer
+                  format: int32
+                Location:
+                  type: string
+                  minLength: 0
+                  maxLength: 100
+                Product:
+                  type: integer
+                  format: int32
+                Country:
+                  type: integer
+                  format: int32
+                Supplier:
+                  type: integer
+                  format: int32
+                Trader:
+                  type: integer
+                  format: int32
+                Status:
+                  type: integer
+                  format: int32
+        $select:
+          type: array
+          example: ["Id", "Name", "Date", "ExpiryDate", "Quantity", "Price", "Total", "CurrencyCode", "UoM", "Location", "Product", "Country", "Supplier", "Trader", "Status"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name,Date,ExpiryDate,Quantity,Price,Total,CurrencyCode,UoM,Location,Product,Country,Supplier,Trader,Status"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    OfferStatus:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+    OfferStatusFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+        $select:
+          type: array
+          example: ["Id", "Name"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    BidStatus:
+      type: object
+      required:
+      properties:
+        Id:
+          type: integer
+          format: int32
+        Name:
+          type: string
+          minLength: 0
+          maxLength: 20
+    BidStatusFilterOptions:
+      type: object
+      properties:
+        $filter:
+          type: object
+          properties:
+            equals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+            notEquals:
+              type: object
+              properties:
+                Id:
+                  oneOf:
+                    - type: integer
+                      format: int32
+                    - type: array
+                      items:
+                        type: integer
+                        format: int32
+                Name:
+                  oneOf:
+                    - type: string
+                      minLength: 0
+                      maxLength: 20
+                    - type: array
+                      items:
+                        type: string
+                        format: double
+                        minLength: 0
+                        maxLength: 20
+            contains:
+              type: object
+              properties:
+                Id:
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            greaterThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            greaterThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            lessThan:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+            lessThanOrEqual:
+              type: object
+              properties:
+                Id:
+                  type: integer
+                  format: int32
+                Name:
+                  type: string
+                  minLength: 0
+                  maxLength: 20
+        $select:
+          type: array
+          example: ["Id", "Name"]
+          items:
+            type: string
+        $sort:
+          - type: string
+            example: "Id,Name"
+        $order:
+          type: string
+          enum: ["asc", "desc"]
+          example: "asc"
+        $offset:
+          type: integer
+          example: 0
+        $limit:
+          type: integer
+          example: 10
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string

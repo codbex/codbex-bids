@@ -1,0 +1,5 @@
+{
+    "module": "codbex-bids/gen/codbex-bids/ui/launchpad/menu-help.js",
+    "extensionPoint": "codbex-bids-menu",
+    "description": "codbex-bids - Application Menu"
+}
