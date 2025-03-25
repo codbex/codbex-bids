@@ -16,18 +16,3 @@ Bids Management Application
 ![offers](images/bids-offers.png)
 
 ![bids](images/bids-bids.png)
-
-
-### Infrastructure
-
-#### Build
-
-	docker build -t codbex-bids:1.0.0 .
-
-#### Run
-
-	docker run --name codbex-bids -d -p 8080:8080 codbex-bids:1.0.0
-
-#### Clean
-
-	docker rm codbex-bids
