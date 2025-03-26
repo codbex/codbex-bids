@@ -1,0 +1,5 @@
+{
+    "module": "codbex-bids/gen/codbex-bids/ui/Offer/perspective.js",
+    "extensionPoint": "portal",
+    "description": "codbex-bids - Perspective - Offer"
+}

@@ -1,0 +1,6 @@
+{
+    "module": "codbex-bids/gen/codbex-bids/ui/entities/OfferStatus/view.js",
+    "extensionPoint": "codbex-bids-view",
+    "description": "codbex-bids - Application View",
+    "role": "codbex-bids.entities.OfferStatusReadOnly,codbex-bids.entities.OfferStatusFullAccess"
+}

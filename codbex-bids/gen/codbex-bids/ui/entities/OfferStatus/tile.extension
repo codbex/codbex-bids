@@ -1,0 +1,6 @@
+{
+    "module": "codbex-bids/gen/codbex-bids/ui/entities/OfferStatus/tile.js",
+    "extensionPoint": "codbex-bids-tile",
+    "description": "codbex-bids - Application Tile",
+    "role": "codbex-bids.entities.OfferStatusReadOnly,codbex-bids.entities.OfferStatusFullAccess"
+}
